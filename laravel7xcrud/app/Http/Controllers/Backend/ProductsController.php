@@ -136,7 +136,7 @@ class ProductsController extends Controller
 
         $pathProductimage = $request->file('product_image')->store('public/productimages');
         $product_status = $request->input('product_status', 1);
-        //Khởi tạo model của product trong phương thức store() như sau :
+        //Khởi tạo model của product trong phương thức store() :
         $product = new ProductsModel();
         
         // khi $product_publish không được nhập dữ liệu

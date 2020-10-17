@@ -31,6 +31,14 @@
         <a class="nav-link" href="{{ url('/backend/orders/index')}}">
           <span>Đơn hàng</span></a>
       </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url('/backend/settings')}}">
+          <span>Cấu hình</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url('/backend/admins/index')}}">
+          <span>Quản trị viên</span></a>
+      </li>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

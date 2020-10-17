@@ -14,8 +14,39 @@ class OrderController extends Controller
     //
 
     public function index(Request $request) {
+        
 
-          return view("backend.orders.index");
+        $data = [];
+        
+        $searchKeyword = $request->query('search', '');
+        $sort = $request->query('sort', '');
+        
+        $order_status_defined = [];
+        $order_status_defined[1] = 'Đang chờ xác nhận';
+        $order_status_defined[2] = 'Đã xác nhận';
+        $order_status_defined[3] = 'Đang vận chuyển';
+        $order_status_defined[4] = 'Hoàn tất';
+        $order_status_defined[5] = 'Đơn hủy';
+        $order_status_defined[6] = 'Đã hoàn tiền (Hủy đơn)';
+
+        $queryORM = OrderModel::where('customer_name', 'LIKE', "%".$searchKeyword."%");
+
+        if ($sort == 'name_asc')
+        {
+            $queryORM = $queryORM->orderBy('customer_name', 'asc');
+        } else if ($sort == 'name_desc')
+        {
+            $queryORM = $queryORM->orderBy('customer_name', 'desc');
+        }
+
+        $orders = $queryORM->paginate(5);
+
+
+        $data['orders'] = $orders;
+        $data['searchKeyword'] = $searchKeyword;
+        $data['sort'] = $sort;
+        $data['order_status_defined'] = $order_status_defined;
+        return view("backend.orders.index", $data);
     }
 
 

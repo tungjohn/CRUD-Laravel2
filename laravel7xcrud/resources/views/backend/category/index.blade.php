@@ -99,7 +99,7 @@
                     page += 1;
                 } else if (rel == 'prev')
                 {
-                    var page = $("body").find('.page-item.avtive > .page-link').eq(0).text();
+                    var page = $("body").find('.page-item.active > .page-link').eq(0).text();
                     page = parseInt(page);
                     page -= 1;
                 } else { var page = $(this).text(); }
